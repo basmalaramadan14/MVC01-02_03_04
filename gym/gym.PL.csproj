@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GymManagment.BLL\GymManagment.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

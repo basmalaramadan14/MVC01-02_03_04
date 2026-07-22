@@ -7,11 +7,11 @@ namespace gym.contexts
     public class GymDbContext : DbContext
 
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //Appseting.JSON
-            optionsBuilder.UseSqlServer("Server=.;Database=GymDb;Trusted_Connection=True;TrustServerCertificate=True;");
-        }
+          public GymDbContext(DbContextOptions<GymDbContext> options)  :base(options)    
+             {
+
+
+             }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration<Plan>( new planConfiguration());
