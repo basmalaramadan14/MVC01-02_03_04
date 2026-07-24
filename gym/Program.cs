@@ -1,4 +1,5 @@
 using gym.contexts;
+using GymManagment.DAL.Repositories;
 using GymManagment.DAL.Repositories.Classes;
 using GymManagment.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +17,14 @@ namespace gym
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
             // Ef core will create object from Dbcontext automatic
             builder.Services.AddDbContext<GymDbContext>(Options =>
             {
-               Options.UseSqlServer(builder.Configuration.GetConnectionString ("DefaultConnection")
-            }  
-            ); 
+                Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            }
+            );
 
 
             var app = builder.Build();

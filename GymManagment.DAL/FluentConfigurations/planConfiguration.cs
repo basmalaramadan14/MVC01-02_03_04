@@ -21,7 +21,7 @@ namespace gym.FluentConfigurations
             builder.Property(p => p.Price)
                 .HasPrecision(10,2);
 
-            builder.Property(p => p.CreatedAt)
+            builder.Property(p => p.CreateAt)
                 .HasDefaultValueSql("GETDATE()");
 
             builder.ToTable(TB =>

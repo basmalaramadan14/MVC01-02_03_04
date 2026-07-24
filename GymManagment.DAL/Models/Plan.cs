@@ -13,5 +13,14 @@ namespace gym.Models
 
         public bool IsActive { get; set; }
 
+        #region Relationships
+
+
+        public ICollection<MemberShip> MemberShip { get; set; }
+
+
+
+        #endregion
+
     }
 }

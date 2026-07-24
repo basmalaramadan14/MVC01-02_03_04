@@ -1,6 +1,8 @@
 ﻿using gym.FluentConfigurations;
 using gym.Models;
+using GymManagment.DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace gym.contexts
 {
@@ -12,12 +14,31 @@ namespace gym.contexts
 
 
              }
+
+        public GymDbContext()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<Plan>( new planConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
 
-        public DbSet<Plan> plans { get; set; }
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<Member> Members { get; set; }
+
+        public DbSet<Trainer> Trainers { get; set; }
+
+        public DbSet<Session> Sessions { get; set; }
+
+        public DbSet<Category> Categorys { get; set; }
+
+        public DbSet<MemberShip> MemberShips { get; set; }
+
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<HealthRecord> HealthRecords { get; set; }
+
+
     }
 }

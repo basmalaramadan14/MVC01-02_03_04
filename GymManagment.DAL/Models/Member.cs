@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gym.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace GymManagment.DAL.Models
 {
-    internal class Member : GymUser
+    public class Member : GymUser
     {
         public String ? Photo {  get; set; }
+        #region Relationships
 
-        //joinDate = cteateAt of BaseEntity
+        public HealthRecord HealthRecord { get; set; } = default;
+        public ICollection<MemberShip> MemberShipPlans {  get; set; }
+
+        public ICollection<Booking> MemberSession { get; set; }
+
+        #endregion
+
 
     }
 }

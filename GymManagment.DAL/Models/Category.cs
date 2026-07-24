@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace GymManagment.DAL.Models
 {
-    internal class Category : BaseEntity
+    public class Category : BaseEntity
     {
         public  String CategoryName {  get; set; }
+
+
+        #region Relationships
+        
+         public  ICollection<Session> Sessions { get; set; }
+
+
+
+
+        #endregion
     }
 }

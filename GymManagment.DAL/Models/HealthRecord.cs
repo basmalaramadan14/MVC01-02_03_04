@@ -12,6 +12,13 @@ namespace GymManagment.DAL.Models
         public decimal Weight { get; set; }
         public string BloodType { get; set; }
         public string ? Note { get; set; }
+        #region Relationships
+
+        public Member Member { get; set; } = default;
+
+        public int MemberId { get; set; } // FK
+
+        #endregion
 
         // UpdateAt of BaseEntity => LastUpdate
 

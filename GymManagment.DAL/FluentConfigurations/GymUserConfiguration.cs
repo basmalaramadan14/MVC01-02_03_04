@@ -27,7 +27,7 @@ namespace GymManagment.DAL.FluentConfigurations
             builder.ToTable(tb =>
             {
                 tb.HasCheckConstraint("EmailCheck", "Email Like'_%@_%._%'");  //Basmala@gmail.com
-                tb.HasCheckConstraint("PhoneCheck", " Like '010 or Phone Like '011' or Phone Like '012'or Phone Like '015'");
+                tb.HasCheckConstraint("PhoneCheck", " Like '010% or Phone Like '011%' or Phone Like '012%'or Phone Like '015%'");
 
                 //Address owned Entity Type
                 builder.OwnsOne(X => X.Address, address =>
