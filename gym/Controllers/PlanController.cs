@@ -5,6 +5,7 @@ using GymManagment.DAL.Repositories.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace gym.Controllers
 {
     public class PlanController : Controller

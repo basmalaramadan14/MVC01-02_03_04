@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GymManagment.DAL.Repositories;
+
 
 namespace GymManagment.DAL.Repositories.Classes
 {
@@ -53,6 +55,11 @@ namespace GymManagment.DAL.Repositories.Classes
         {
             _set .Update(entity);
             return await (_dbContext.SaveChangesAsync());
+        }
+
+        Task IGenericRepository<TEntity>.DeleteAsync(TEntity entity)
+        {
+            return DeleteAsync(entity);
         }
     }
 }
