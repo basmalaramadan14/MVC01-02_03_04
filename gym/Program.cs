@@ -1,4 +1,6 @@
 using gym.contexts;
+using GymManagment.BLL.Services;
+using GymManagment.BLL.Services.Interfaces;
 using GymManagment.DAL.Repositories;
 using GymManagment.DAL.Repositories.Classes;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +17,7 @@ namespace gym
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-           // builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            builder.Services.AddScoped<IMemberService, MemberService>();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             // Ef core will create object from Dbcontext automatic
