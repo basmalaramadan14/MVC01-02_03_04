@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GymManagment.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitiaCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,8 +49,8 @@ namespace GymManagment.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Members", x => x.Id);
-                    table.CheckConstraint("EmailCheck", "Email Like'_%@_%._%'");
-                    table.CheckConstraint("PhoneCheck", " Like '010% or Phone Like '011%' or Phone Like '012%'or Phone Like '015%'");
+                    table.CheckConstraint("EmailCheck", "Email LIKE'%@%.%'");
+                    table.CheckConstraint("PhoneCheck", "Phone LIKE '010%' or Phone LIKE '011%' or Phone LIKE '012%' or Phone LIKE '015%'");
                 });
 
             migrationBuilder.CreateTable(
@@ -94,8 +94,8 @@ namespace GymManagment.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trainers", x => x.Id);
-                    table.CheckConstraint("EmailCheck1", "Email Like'_%@_%._%'");
-                    table.CheckConstraint("PhoneCheck1", " Like '010% or Phone Like '011%' or Phone Like '012%'or Phone Like '015%'");
+                    table.CheckConstraint("EmailCheck1", "Email LIKE'%@%.%'");
+                    table.CheckConstraint("PhoneCheck1", "Phone LIKE '010%' or Phone LIKE '011%' or Phone LIKE '012%' or Phone LIKE '015%'");
                 });
 
             migrationBuilder.CreateTable(

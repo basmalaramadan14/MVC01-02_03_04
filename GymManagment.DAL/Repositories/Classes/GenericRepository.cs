@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GymManagment.DAL.Repositories;
+using System.Linq.Expressions;
 
 
 namespace GymManagment.DAL.Repositories.Classes
@@ -31,6 +32,11 @@ namespace GymManagment.DAL.Repositories.Classes
         {
             _set. Add(entity);
             return await _dbContext.SaveChangesAsync();
+        }
+
+        public Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken ct = default)
+        {
+            return _set.AsNoTracking().AnyAsync(predicate, ct);
         }
 
         public async Task<int> DeleteAsync(TEntity entity)

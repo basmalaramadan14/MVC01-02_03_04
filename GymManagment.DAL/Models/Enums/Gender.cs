@@ -8,7 +8,7 @@ namespace GymManagment.DAL.Models.Enums
 {
     public enum Gender
     {
-        Mal = 1,
+        Male = 1,
         Female = 2
     }
 }

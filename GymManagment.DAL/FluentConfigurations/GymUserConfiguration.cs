@@ -26,15 +26,13 @@ namespace GymManagment.DAL.FluentConfigurations
 
             builder.ToTable(tb =>
             {
-                tb.HasCheckConstraint("EmailCheck", "Email Like'_%@_%._%'");  //Basmala@gmail.com
-                tb.HasCheckConstraint("PhoneCheck", "Phone Like '010%' or Phone Like '011%' or Phone Like '012%'or Phone Like '015%'");
+                tb.HasCheckConstraint("EmailCheck", "Email LIKE'%@%.%'");  //Basmala@gmail.com
+                tb.HasCheckConstraint("PhoneCheck", "Phone LIKE '010%' or Phone LIKE '011%' or Phone LIKE '012%' or Phone LIKE '015%'");
 
                 //Address owned Entity Type
                 builder.OwnsOne(X => X.Address, address =>
                 {
                     address.Property(X => X.Street).HasColumnName("Street").HasColumnType("varchar").HasMaxLength(30);
-
-
 
                 });
                

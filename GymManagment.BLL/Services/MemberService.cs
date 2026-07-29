@@ -1,4 +1,5 @@
 ﻿using GymManagment.BLL.Services.Interfaces;
+using GymManagment.BLL.ViewModels;
 using GymManagment.BLL.ViewModels.MemberViewModels;
 using GymManagment.DAL.Models;
 using GymManagment.DAL.Repositories;
@@ -20,9 +21,97 @@ namespace GymManagment.BLL.Services
         public MemberService(IGenericRepository<Member> memberRepo)
          {
             _memberRepo = memberRepo;
+        }
 
+        //public async Task<bool> CreateMemberAsy(CreateMemberViewModel model, CancellationToken ctt = default)
+        //{
+        //    //Email Exist or Not
+
+        //    var EmailExist =  await _memberRepo.AnyAsync(X =>X.Email == model.Email);
+
+        //    //phone Exist or Not
+        //    var PhoneExist = await _memberRepo.AnyAsync(X => X.Phone == model.Phone);
+
+        //    if (EmailExist || PhoneExist) return false;
+
+
+        //    //Add Member
+        //    var member = new Member()
+        //    {
+
+        //        Name = model.Name,
+        //        Email = model.Email,
+        //        Phone = model.Phone,
+        //        Gender = model.Gender,
+        //        DateOfBith = model.DateOfBirth,
+        //        Address = new Address()
+        //        {
+        //            BuildingNumbern = model.BuildingNumber,
+        //            City = model.City,
+        //            Street = model.Street,
+
+
+        //        },
+        //        HealthRecord = new HealthRecord()
+        //        {
+        //            BloodType = model.HealthRecordViewModel.BloodType,
+        //            Heigth = model.HealthRecordViewModel.Height,
+        //            Weight = model.HealthRecordViewModel.Weight,
+        //            Note = model.HealthRecordViewModel.Note,
+
+        //        }
+
+        //    };
+        //        var  result = await _memberRepo.AddAsync(member);
+        //    return result > 0;
+        //}
+        //public async Task<bool> CreateMemberAsy(CreateMemberViewModel model, CancellationToken ctt = default)
+
+        public async Task<bool> CreateMemberAsync(CreateMemberViewModel model, CancellationToken ctt = default)
+        {
+
+            //Email Exist or Not
+
+            var EmailExist = await _memberRepo.AnyAsync(X => X.Email == model.Email);
+
+            //phone Exist or Not
+            var PhoneExist = await _memberRepo.AnyAsync(X => X.Phone == model.Phone);
+
+            if (EmailExist || PhoneExist) return false;
+
+
+            //Add Member
+            var member = new Member()
+            {
+
+                Name = model.Name,
+                Email = model.Email,
+                Phone = model.Phone,
+                Gender = model.Gender,
+                DateOfBith = model.DateOfBirth,
+                Address = new Address()
+                {
+                    BuildingNumbern = model.BuildingNumber,
+                    City = model.City,
+                    Street = model.Street,
+
+
+                },
+                HealthRecord = new HealthRecord()
+                {
+                    BloodType = model.HealthRecordViewModel.BloodType,
+                    Heigth = model.HealthRecordViewModel.Height,
+                    Weight = model.HealthRecordViewModel.Weight,
+                    Note = model.HealthRecordViewModel.Note,
+
+                }
+
+            };
+            var result = await _memberRepo.AddAsync(member);
+            return result > 0;
 
         }
+
         public async Task<IEnumerable<MemberViewModel>> GetAllAsync(CancellationToken ct = default)
         {
             var members = await _memberRepo.GetAllAsync(ct : ct);

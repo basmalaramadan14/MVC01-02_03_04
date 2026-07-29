@@ -1,4 +1,5 @@
 ﻿using GymManagment.BLL.Services.Interfaces;
+using GymManagment.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace gym.PL.Controllers
@@ -22,15 +23,36 @@ namespace gym.PL.Controllers
             var members = await _memService.GetAllAsync(ct);
             return View(members);
         }
-            
+
 
 
         #endregion
 
 
         #region Create
+        //Get 
+        [HttpGet]
+        public IActionResult Create()
+            => View();
+        //Post
+        //CreateMember
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMember(CreateMemberViewModel model, CancellationToken ct)
+
+        {
+              //Cheeck ModelState
+              if(!ModelState.IsValid) return View(nameof(Create), model);
+               var result = await _memService.CreateMemberAsync(model, ct);
+
+            if (result)
+                TempData["SuccessMessage"] = "Member Create SuccessFully ";
+            else
+                TempData["ErrorMessage"] = "Member Failed To Create Member!";
 
 
+            return RedirectToAction(nameof(Index));
+          }
         #endregion
 
 

@@ -200,9 +200,9 @@ namespace GymManagment.DAL.Migrations
 
                     b.ToTable("Members", t =>
                         {
-                            t.HasCheckConstraint("EmailCheck", "Email Like'_%@_%._%'");
+                            t.HasCheckConstraint("EmailCheck", "Email LIKE'%@%.%'");
 
-                            t.HasCheckConstraint("PhoneCheck", " Like '010% or Phone Like '011%' or Phone Like '012%'or Phone Like '015%'");
+                            t.HasCheckConstraint("PhoneCheck", "Phone LIKE '010%' or Phone LIKE '011%' or Phone LIKE '012%' or Phone LIKE '015%'");
                         });
                 });
 
@@ -338,10 +338,10 @@ namespace GymManagment.DAL.Migrations
 
                     b.ToTable("Trainers", t =>
                         {
-                            t.HasCheckConstraint("EmailCheck", "Email Like'_%@_%._%'")
+                            t.HasCheckConstraint("EmailCheck", "Email LIKE'%@%.%'")
                                 .HasName("EmailCheck1");
 
-                            t.HasCheckConstraint("PhoneCheck", " Like '010% or Phone Like '011%' or Phone Like '012%'or Phone Like '015%'")
+                            t.HasCheckConstraint("PhoneCheck", "Phone LIKE '010%' or Phone LIKE '011%' or Phone LIKE '012%' or Phone LIKE '015%'")
                                 .HasName("PhoneCheck1");
                         });
                 });
