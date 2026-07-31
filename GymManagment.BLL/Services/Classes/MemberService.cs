@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymManagment.BLL.Services
+namespace GymManagment.BLL.Services.Classes
 {
     public class MemberService : IMemberService
         

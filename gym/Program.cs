@@ -1,5 +1,5 @@
 using gym.contexts;
-using GymManagment.BLL.Services;
+using GymManagment.BLL.Services.Classes;
 using GymManagment.BLL.Services.Interfaces;
 using GymManagment.DAL.Repositories;
 using GymManagment.DAL.Repositories.Classes;
