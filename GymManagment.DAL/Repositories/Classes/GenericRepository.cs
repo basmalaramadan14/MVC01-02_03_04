@@ -28,10 +28,9 @@ namespace GymManagment.DAL.Repositories.Classes
 
         }
 
-        public async Task<int> AddAsync(TEntity entity)
+        public async void AddAsync(TEntity entity)
         {
-            _set. Add(entity);
-            return await _dbContext.SaveChangesAsync();
+            _set. Add(entity);// Add Local
         }
 
         public Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken ct = default)
@@ -39,10 +38,9 @@ namespace GymManagment.DAL.Repositories.Classes
             return _set.AsNoTracking().AnyAsync(predicate, ct);
         }
 
-        public async Task<int> DeleteAsync(TEntity entity)
+        public async void DeleteAsync(TEntity entity)
         {
             _set .Remove(entity);
-            return  await  _dbContext.SaveChangesAsync();
 
 
         }
@@ -64,10 +62,9 @@ namespace GymManagment.DAL.Repositories.Classes
         => await _set.FindAsync(id, ct);
         
 
-        public async Task<int> UpdateAsync(TEntity entity)
+        public async void UpdateAsync(TEntity entity)
         {
             _set .Update(entity);
-            return await (_dbContext.SaveChangesAsync());
         }
 
         
