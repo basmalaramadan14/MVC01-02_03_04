@@ -17,12 +17,14 @@ namespace GymManagment.DAL.Repositories
         //Update
         Task<int> UpdateAsync(TEntity entity);
         //Delete
-        Task DeleteAsync(TEntity entity);
+        Task<int> DeleteAsync(TEntity entity);
         //GetAll
         Task<IEnumerable<TEntity>> GetAllAsync(bool tracking = false, CancellationToken  ct= default);
 
         Task<bool> AnyAsync(Expression<Func<TEntity,bool>> predicate, CancellationToken ct = default);
-       // X => x.EMail
+        // X => x.EMail
+        Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity,bool>> predicate, bool tracking = false,CancellationToken ct = default);
+
 
     }
 }

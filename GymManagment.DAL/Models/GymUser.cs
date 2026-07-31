@@ -10,11 +10,11 @@ namespace GymManagment.DAL.Models
 {
     public abstract class GymUser : BaseEntity
     {
-        public string Name { get; set; }
-        public string Email { get; set; }   
-        public string Phone {  get; set; }
-        public DateOnly DateOfBith {  get; set; }
-        public Gender Gender { get; set; }
+        public string Name { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string Phone { get; set; } = default!;
+        public DateOnly DateOfBith { get; set; }
+        public Gender Gender { get; set; } 
 
         //[Address:BNumber ,street, city ]
 
@@ -24,7 +24,7 @@ namespace GymManagment.DAL.Models
     [Owned]
     public class Address
     {
-        public int BuildingNumbern { get; set; } = default!;
+        public string BuildingNumber { get; set; } = default!;
         public string Street { get; set; } = default!;
 
         public string City { get; set; } = default!;

@@ -1,11 +1,5 @@
 ﻿using GymManagment.BLL.ViewModels;
 using GymManagment.BLL.ViewModels.MemberViewModels;
-using GymManagment.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymManagment.BLL.Services.Interfaces
 {
@@ -15,5 +9,17 @@ namespace GymManagment.BLL.Services.Interfaces
 
         //Crate Member
         Task<bool> CreateMemberAsync(CreateMemberViewModel member, CancellationToken ctt = default);
+        //Get Member
+        Task<MemberViewModel?> GetMemberDetailsByAsync(int memberId, CancellationToken ct = default);
+        //Get Member Health Record
+        Task<HealthRecordViewModel> GetMemberHealthRecord(int memberId, CancellationToken ct );
+        // Get Member To Update
+        Task<MemberToUpdateViewModel>GetMemberToUpdateAsync( int memberId,CancellationToken ct = default );
+        //Update 
+        Task<bool> UpdateMemberAsync( int id, MemberToUpdateViewModel model , CancellationToken ct = default );
+        //Delete
+
+        Task<bool> DeleteMemberAsync(int memberId, CancellationToken ct = default);
+
     }
 }
