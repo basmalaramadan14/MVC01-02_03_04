@@ -1,4 +1,5 @@
 using gym.contexts;
+using GymManagment.BLL.Profiles;
 using GymManagment.BLL.Services.Classes;
 using GymManagment.BLL.Services.Interfaces;
 using GymManagment.DAL.Repositories;
@@ -22,6 +23,11 @@ namespace gym
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IMemberService, MemberService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+            builder.Services.AddScoped<ISessionService, SessionService>();
+            builder.Services.AddAutoMapper(X=>X.AddProfile(new MappingProfile()));
+
+
 
             // Ef core will create object from Dbcontext automatic
             builder.Services.AddDbContext<GymDbContext>(Options =>

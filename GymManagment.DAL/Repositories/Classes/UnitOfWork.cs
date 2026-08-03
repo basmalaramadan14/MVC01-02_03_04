@@ -13,13 +13,16 @@ namespace GymManagment.DAL.Repositories.Classes
     {
         private readonly GymDbContext _dbContext;
         private readonly Dictionary<String, object> _repositories = [];
+
        //Database Connection
 
-       public UnitOfWork(GymDbContext dbContext)
+       public UnitOfWork(GymDbContext dbContext, ISessionRepository sessionRepo)
         {
             _dbContext = dbContext;
+            SessionRepository = sessionRepo;
         }
 
+        public ISessionRepository SessionRepository { get; }
         public IGenericRepository<TEntity> GetGenericRepository<TEntity>() where TEntity : BaseEntity, new()
         {
             //check if repo exist or not????
@@ -41,6 +44,12 @@ namespace GymManagment.DAL.Repositories.Classes
 
 
         }
+        public IGenericRepository<T> GetRepository<T>() where T : BaseEntity, new()
+        {
+            return GetGenericRepository<T>();
+        }
+
+
 
         public async Task<int> SaveChangesAsync(CancellationToken ct = default)
         
